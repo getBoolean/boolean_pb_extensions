@@ -1,11 +1,11 @@
-import 'package:dart_pb_extensions_common/paperback.dart';
 import 'package:dart_pb_extensions_common/js.dart';
+import 'package:dart_pb_extensions_common/paperback.dart';
 
 void main() {
   registerSource(
     id: kGuyaId,
     sourceInfo: guyaInfo,
-    sourceCreator: () => Guya(),
+    sourceCreator: Guya.new,
   );
 }
 
