@@ -1,7 +1,7 @@
 name: boolean_pb_extensions
-description: A starting point for Dart libraries or applications.
+description: getBoolean's extensions for Paperback v0.7 (extensions v0.6)
 version: 1.0.0
-# homepage: https://www.example.com
+homepage: https://github.com/getBoolean/boolean_pb_extensions
 
 publish_to: "none"
 
