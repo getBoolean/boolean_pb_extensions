@@ -13,5 +13,7 @@ dependencies:
     git: https://github.com/getBoolean/dart_pb_extensions_common
 
 dev_dependencies:
+  dpaperback_cli:
+    git: https://github.com/getBoolean/dpaperback_cli
   lints: ^2.0.0
   test: ^1.16.0
