@@ -6,7 +6,11 @@ Extensions for Paperback v0.7 (extensions v0.6) written in Dart
 
 ## Contributing
 
-This project uses [dpaperback_cli](https://github.com/getBoolean/dpaperback_cli/) to bundle and serve the sources. It can be installed globally or as a dev dependency,
+This project uses [dpaperback_cli](https://github.com/getBoolean/dpaperback_cli/) to bundle and serve the sources. It can be installed globally or as a dev dependency.
+
+1. Install Node
+2. Install Dart or Flutter (Dart is included with Flutter)
+3. Install dpaperback_cli
 
 ## Folder Structure
 
