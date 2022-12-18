@@ -18,6 +18,7 @@ lib/
   -> source2/
   ...
 pubspec.yaml             # Dependencies used in any of the sources. Dart has tree shaking, so any dependencies not used in a source will not be bundled.
+```
 
 ## Dependencies
 
