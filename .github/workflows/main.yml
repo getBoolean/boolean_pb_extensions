@@ -1,0 +1,64 @@
+name: Bundle and Publish Sources
+on:
+  push:
+    branches:
+      - "**"
+      - "!main"
+jobs:
+  build:
+    name: Bundle and Publish Sources
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [14.x]
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v3
+
+      - name: Setup Node.js environment
+        uses: actions/setup-node@v2.1.2
+        with:
+          node-version: ${{ matrix.node-version }}
+
+      - name: Set up Dart SDK
+        uses: dart-lang/setup-dart@v1.3
+
+      - name: Install Dependencies
+        run: dart pub get
+
+      # - name: Verify Formatting
+      #   run: dart format --output=none --set-exit-if-changed .
+
+      # Consider passing '--fatal-infos' for slightly stricter analysis.
+      - name: Analyze Project
+        run: dart analyze --fatal-infos
+
+      # - name: Activate Coverage
+      #   run: dart pub global activate coverage
+
+      # # Your project will need to have tests in test/ and a dependency on
+      # # package:test for this step to succeed.
+      # - name: Run Tests
+      #   run: dart pub global run coverage:test_with_coverage --branch-coverage
+
+      # - name: Upload Coverage Results
+      #   uses: codecov/codecov-action@v3.1.0
+      #   with:
+      #     token: ${{ secrets.CODECOV_TOKEN }}
+      #     verbose: true
+      #     fail_ci_if_error: true
+
+      - name: Extract branch name
+        shell: bash
+        run: echo "##[set-output name=branch;]$(echo ${GITHUB_REF#refs/heads/})"
+        id: extract_branch
+
+      - run: dart pub global activate "https://github.com/getBoolean/dpaperback_cli" -s git
+      - run: dart pub global run dpaperback_cli:dpaperack
+
+      - name: Deploy to GitHub Pages
+        uses: JamesIves/github-pages-deploy-action@4.1.0
+        with:
+          branch: gh-pages
+          folder: bundles
+          target-folder: ${{ steps.extract_branch.outputs.branch }}
