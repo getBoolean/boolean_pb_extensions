@@ -61,4 +61,5 @@ jobs:
         uses: JamesIves/github-pages-deploy-action@4.1.0
         with:
           branch: gh-pages
-          folder: bundles
+          folder: bundles/${{ steps.extract_branch.outputs.branch }}
+          target-folder: ${{ steps.extract_branch.outputs.branch }}
