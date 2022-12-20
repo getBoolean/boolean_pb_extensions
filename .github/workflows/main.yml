@@ -62,4 +62,3 @@ jobs:
         with:
           branch: gh-pages
           folder: bundles
-          target-folder: ${{ steps.extract_branch.outputs.branch }}
