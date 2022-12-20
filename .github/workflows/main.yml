@@ -55,7 +55,7 @@ jobs:
         id: extract_branch
 
       - run: dart pub global activate "https://github.com/getBoolean/dpaperback_cli" -s git
-      - run: dart pub global run dpaperback_cli:dpaperback bundle
+      - run: dart pub global run dpaperback_cli:dpaperback bundle --subfolder ${{ steps.extract_branch.outputs.branch }}
 
       - name: Deploy to GitHub Pages
         uses: JamesIves/github-pages-deploy-action@4.1.0
