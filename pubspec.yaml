@@ -17,3 +17,16 @@ dev_dependencies:
     git: https://github.com/getBoolean/dpaperback_cli
   lints: ^2.0.0
   test: ^1.16.0
+
+paperback:
+  # Required
+  repository_name: Boolean's Paperback Extensions
+  description: Extensions for Paperback v0.7 (extensions v0.6), written using Dart and compiled to JavaScript
+
+  # Optional
+  no_add_to_paperback_button: false # Default: false
+  # Custom logo path or url. Defaults to the Paperback logo.
+  repository_logo: https://upload.wikimedia.org/wikipedia/commons/thumb/7/7e/Dart-logo.png/768px-Dart-logo.png
+  # Custom base url for the repository
+  # The default base_url will be deducted form GITHUB_REPOSITORY environment variable.
+  # base_url: 
