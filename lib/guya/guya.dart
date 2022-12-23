@@ -14,7 +14,7 @@ const kGuyaDomain = 'https://guya.cubari.moe';
 const kGuyaApiBase = 'https://guya.cubari.moe/api';
 
 SourceInfo guyaInfo = SourceInfo(
-  version: '2.0.0',
+  version: '2.0.0-alpha.1',
   name: 'Guya (Dart)',
   icon: 'icon.png',
   author: 'getBoolean',
