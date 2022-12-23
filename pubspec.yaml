@@ -21,7 +21,7 @@ dev_dependencies:
 paperback:
   # Required
   repository_name: Boolean's Paperback Extensions
-  description: Extensions for Paperback v0.7 (extensions v0.6), written using Dart and compiled to JavaScript
+  description: Extensions for Paperback v0.6 - v0.7, written using Dart and compiled to JavaScript
 
   # Optional
   no_add_to_paperback_button: false # Default: false

@@ -9,12 +9,12 @@ void main() {
   );
 }
 
-const kGuyaId = 'Guya';
+const kGuyaId = 'Guya2';
 const kGuyaDomain = 'https://guya.cubari.moe';
 const kGuyaApiBase = 'https://guya.cubari.moe/api';
 
 SourceInfo guyaInfo = SourceInfo(
-  version: '2.0.0',
+  version: '2.0.0-alpha.1',
   name: 'Guya (Dart)',
   icon: 'icon.png',
   author: 'getBoolean',
@@ -51,57 +51,68 @@ class Guya extends Source {
 
   @override
   Future<MangaInfo> getMangaDetails(String mangaId) async {
-    final request = Request(url: '$kGuyaApiBase/series_page_data/$mangaId', method: 'GET');
-    final response = await requestManager.schedule(request, 1);
-
-    final responseData = response.data;
-    final dynamic data = (responseData is String) ? parseJson(responseData) : response.data;
-    if (data is! Map<String, Object?>) {
-      throw JsError('Invalid response data: $responseData');
-    }
-
-    final series = asType<String>(data['series']);
-    final altTitles = asType<List>(data['alt_titles']) ?? [];
-    final List<String> titles = [series, ...altTitles].removeNull();
-    final coverVolUrl = data['cover_vol_url'];
-    final metadataElement = asType<Map>(data['metadata']);
-    final synopsis = asType<String>(data['synopsis']);
-
     return MangaInfo(
-      id: mangaId,
-      titles: titles,
-      image: coverVolUrl != null && coverVolUrl is String
-          ? kGuyaDomain + coverVolUrl
-          : 'https://i.imgur.com/GYUxEX8.png',
+      id: 'test-manga',
+      titles: ['Test Manga'],
+      image: 'https://i.imgur.com/GYUxEX8.png',
       status: MangaStatus.ongoing,
-      author: metadataElement?[0]?[1],
-      artist: metadataElement?[1]?[1],
-      desc: synopsis,
+      author: 'Test Author',
+      artist: 'Test Artist',
+      desc: 'Description here',
     );
   }
 
   @override
   Future<List<Chapter>> getChapters(String mangaId) async {
-    throw UnimplementedError();
+    return [
+      Chapter(
+        id: 'test-chapter',
+        mangaId: mangaId,
+        chapNum: 1,
+        langCode: LanguageCode.english.code,
+        name: 'Chapter Test',
+        volume: 1,
+        group: 'Manga Group',
+        time: Date(DateTime.now().toIso8601String()),
+      )
+    ];
   }
 
   @override
   Future<ChapterDetails> getChapterDetails(String mangaId, String chapterId) async {
-    throw UnimplementedError();
+    return ChapterDetails(
+      id: chapterId,
+      mangaId: mangaId,
+      pages: [
+        'https://upload.wikimedia.org/wikipedia/commons/thumb/7/7e/Dart-logo.png/768px-Dart-logo.png',
+      ],
+      longStrip: false,
+    );
   }
 
   @override
   Future<void> filterUpdatedMangas(
-    void Function(MangaUpdates updates) updates,
+    void Function(MangaUpdates updates) mangaUpdatesFoundCallback,
     Date time,
     List<String> ids,
-  ) {
-    throw UnimplementedError();
+  ) async {
+    mangaUpdatesFoundCallback(
+      MangaUpdates(ids: ['test-manga']),
+    );
   }
 
   @override
   Future<PagedResults> getSearchResults(SearchRequest query, Object? metadata) async {
-    throw UnimplementedError();
+    return PagedResults(
+      results: [
+        MangaTile(
+          id: 'test-manga',
+          image: 'https://i.imgur.com/GYUxEX8.png',
+          title: IconText(text: 'Test Manga'),
+        ),
+      ],
+      metadata: metadata,
+    );
   }
 }
 

@@ -2,7 +2,7 @@
 
 Status: **In Development** (not ready for use)
 
-Extensions for Paperback v0.7 (extensions v0.6) written in Dart
+Extensions for Paperback v0.6 - v0.7, written in Dart
 
 ## Contributing
 
