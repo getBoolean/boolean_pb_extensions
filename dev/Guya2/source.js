@@ -3656,7 +3656,7 @@ s($,"jV","hq",()=>A.it(A.f6(self)))
 s($,"jI","fe",()=>A.h8("_$dart_dartObject"))
 s($,"jW","ff",()=>function DartObject(a){this.o=a})
 r($,"jY","hr",()=>{A.iZ()
-return A.hX("getBoolean","https://github.com/getBoolean",B.t,"Extension that pulls manga from Guya.moe.","icon.png","gb","Guya (Dart)",A.B([new A.ao({text:"Notifications",type:"success"})],A.cB("u<ao>")),"2.0.0","https://guya.cubari.moe")})})();(function nativeSupport(){!function(){var s=function(a){var m={}
+return A.hX("getBoolean","https://github.com/getBoolean",B.t,"Extension that pulls manga from Guya.moe.","icon.png","gb","Guya (Dart)",A.B([new A.ao({text:"Notifications",type:"success"})],A.cB("u<ao>")),"2.0.0-alpha.1","https://guya.cubari.moe")})})();(function nativeSupport(){!function(){var s=function(a){var m={}
 m[a]=1
 return Object.keys(hunkHelpers.convertToFastObject(m))[0]}
 v.getIsolateTag=function(a){return s("___dart_"+a+v.isolateTag)}
