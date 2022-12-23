@@ -4,11 +4,11 @@ Status: **In Development** (not ready for use)
 
 Extensions for Paperback v0.6 - v0.7, written in Dart
 
-## Contributing
+## Developer Setup
 
 This project uses [dpaperback_cli](https://github.com/getBoolean/dpaperback_cli/) to bundle and serve the sources. It can be installed globally or as a dev dependency.
 
-1. Install Node
+1. Install Node 14+ (I recommend [nvm](https://github.com/nvm-sh/nvm)/[nvm-windows](https://github.com/coreybutler/nvm-windows))
 2. Install Dart or Flutter (Dart is included with Flutter)
 3. Install dpaperback_cli
 
