@@ -1599,7 +1599,7 @@ void function(__object__, __array__, __global__)
 },{}]},{},[4])("es6")
 });
 
-let self = this;
+self = window;
 (function dartProgram(){function copyProperties(a,b){var s=Object.keys(a)
 for(var r=0;r<s.length;r++){var q=s[r]
 b[q]=a[q]}}function mixinPropertiesHard(a,b){var s=Object.keys(a)
