@@ -1894,9 +1894,6 @@ const self = globalThis;
     Symbol: function Symbol(t0) {
       this._name = t0;
     },
-    ConstantMap__throwUnmodifiable() {
-      throw A.wrapException(A.UnsupportedError$("Cannot modify unmodifiable Map"));
-    },
     unminifyOrTag(rawClassName) {
       var preserved = init.mangledGlobalNames[rawClassName];
       if (preserved != null)
@@ -2798,9 +2795,6 @@ const self = globalThis;
       _._last = _._first = _.__js_helper$_rest = _._nums = _._strings = null;
       _._modifications = 0;
       _.$ti = t0;
-    },
-    JsLinkedHashMap_addAll_closure: function JsLinkedHashMap_addAll_closure(t0) {
-      this.$this = t0;
     },
     LinkedHashMapCell: function LinkedHashMapCell(t0, t1) {
       this.hashMapCellKey = t0;
@@ -4905,9 +4899,6 @@ const self = globalThis;
     LinkedHashMap_LinkedHashMap$_literal(keyValuePairs, $K, $V) {
       return $K._eval$1("@<0>")._bind$1($V)._eval$1("LinkedHashMap<1,2>")._as(A.fillLiteralMap(keyValuePairs, new A.JsLinkedHashMap($K._eval$1("@<0>")._bind$1($V)._eval$1("JsLinkedHashMap<1,2>"))));
     },
-    LinkedHashMap_LinkedHashMap$_empty($K, $V) {
-      return new A.JsLinkedHashMap($K._eval$1("@<0>")._bind$1($V)._eval$1("JsLinkedHashMap<1,2>"));
-    },
     IterableBase_iterableToShortString(iterable, leftDelimiter, rightDelimiter) {
       var parts, t1;
       if (A._isToStringVisiting(iterable)) {
@@ -5054,9 +5045,6 @@ const self = globalThis;
     },
     _HashMap: function _HashMap() {
     },
-    _HashMap_addAll_closure: function _HashMap_addAll_closure(t0) {
-      this.$this = t0;
-    },
     _IdentityHashMap: function _IdentityHashMap(t0) {
       var _ = this;
       _._collection$_length = 0;
@@ -5084,12 +5072,6 @@ const self = globalThis;
       this.result = t1;
     },
     MapMixin: function MapMixin() {
-    },
-    MapMixin_addAll_closure: function MapMixin_addAll_closure(t0) {
-      this.$this = t0;
-    },
-    MapMixin_entries_closure: function MapMixin_entries_closure(t0) {
-      this.$this = t0;
     },
     _UnmodifiableMapMixin: function _UnmodifiableMapMixin() {
     },
@@ -5302,11 +5284,6 @@ const self = globalThis;
     },
     Iterator: function Iterator() {
     },
-    MapEntry: function MapEntry(t0, t1, t2) {
-      this.key = t0;
-      this.value = t1;
-      this.$ti = t2;
-    },
     Null: function Null() {
     },
     Object: function Object() {
@@ -5498,8 +5475,7 @@ const self = globalThis;
     _JsArray_JsObject_ListMixin: function _JsArray_JsObject_ListMixin() {
     },
     main() {
-      var t1 = type$.Tuple_of_SourceInfo_and_Registerable_Function;
-      A.register(A.LinkedHashMap_LinkedHashMap$_literal(["Guya2", new A.Tuple($.$get$guyaInfo(), A.guya_Guya___new_tearOff$closure(), t1)], type$.String, t1), type$.Registerable);
+      A.register(A.guya_Guya___new_tearOff$closure(), "Guya2", $.$get$guyaInfo(), type$.Registerable);
     },
     Guya___new_tearOff() {
       return new A.Guya(new A.Parser());
@@ -5720,20 +5696,20 @@ const self = globalThis;
     },
     JsTrackerActionQueue: function JsTrackerActionQueue() {
     },
-    register(registerables, $T) {
-      var sourceJsClass = A.JsObject_JsObject$jsify(registerables.get$entries(registerables).fold$1$2(0, A.LinkedHashMap_LinkedHashMap$_empty(type$.String, type$.Object), new A.register_closure(), type$.Map_String_Object));
-      $.$get$_context().$indexSet(0, "Sources", sourceJsClass);
-      return sourceJsClass;
+    register(creator, id, info, $T) {
+      var t2, t3, t4,
+        sourceExtensionJsClass = A.allowInterop(new A.register_closure(creator), type$.JsObject_Function),
+        t1 = $.$get$_context();
+      t1.$indexSet(0, "Sources.$SourceId$", id);
+      t2 = "Sources." + id;
+      t3 = info.__SourceInfo_jsSourceInfo_F;
+      t3 === $ && A.throwLateFieldNI("jsSourceInfo");
+      t4 = J.getInterceptor$x(t3);
+      t1.$indexSet(0, t2 + "Info", A.JsObject_JsObject$jsify(A.LinkedHashMap_LinkedHashMap$_literal(["version", t4.get$version(t3), "name", t4.get$name(t3), "icon", t4.get$icon(t3), "author", t4.get$author(t3), "desc", t4.get$description(t3), "contentRating", t4.get$contentRating(t3), "websiteBaseURL", t4.get$websiteBaseURL(t3), "website", t4.get$authorWebsite(t3), "language", t4.get$language(t3), "tags", t4.get$sourceTags(t3)], type$.String, type$.dynamic)));
+      t1.$indexSet(0, t2, sourceExtensionJsClass);
     },
-    Tuple: function Tuple(t0, t1, t2) {
-      this.first = t0;
-      this.second = t1;
-      this.$ti = t2;
-    },
-    register_closure: function register_closure() {
-    },
-    register__closure: function register__closure(t0) {
-      this.extensionCreator = t0;
+    register_closure: function register_closure(t0) {
+      this.creator = t0;
     },
     isBrowserObject(o) {
       return type$.Blob._is(o) || type$.Event._is(o) || type$.KeyRange._is(o) || type$.ImageData._is(o) || type$.Node._is(o) || type$.Window._is(o) || type$.WorkerGlobalScope._is(o);
@@ -6314,10 +6290,6 @@ const self = globalThis;
     toString$0(_) {
       return A.MapBase_mapToString(this);
     },
-    addAll$1(_, other) {
-      A._instanceType(this)._eval$1("Map<1,2>")._as(other);
-      A.ConstantMap__throwUnmodifiable();
-    },
     $isMap: 1
   };
   A.ConstantStringMap.prototype = {
@@ -6549,9 +6521,6 @@ const self = globalThis;
         return false;
       return strings[key] != null;
     },
-    addAll$1(_, other) {
-      A._instanceType(this)._eval$1("Map<1,2>")._as(other).forEach$1(0, new A.JsLinkedHashMap_addAll_closure(this));
-    },
     $index(_, key) {
       var strings, cell, t1, nums, _null = null;
       if (typeof key == "string") {
@@ -6675,16 +6644,6 @@ const self = globalThis;
     },
     $isLinkedHashMap: 1
   };
-  A.JsLinkedHashMap_addAll_closure.prototype = {
-    call$2(key, value) {
-      var t1 = this.$this,
-        t2 = A._instanceType(t1);
-      t1.$indexSet(0, t2._precomputed1._as(key), t2._rest[1]._as(value));
-    },
-    $signature() {
-      return A._instanceType(this.$this)._eval$1("~(1,2)");
-    }
-  };
   A.LinkedHashMapCell.prototype = {};
   A.LinkedHashMapKeyIterable.prototype = {
     get$length(_) {
@@ -6737,7 +6696,7 @@ const self = globalThis;
     call$1(tag) {
       return this.prototypeForTag(A._asString(tag));
     },
-    $signature: 37
+    $signature: 36
   };
   A.NativeTypedData.prototype = {$isTypedData: 1};
   A.NativeTypedArray.prototype = {
@@ -6830,7 +6789,7 @@ const self = globalThis;
       t1.storedCallback = null;
       f.call$0();
     },
-    $signature: 4
+    $signature: 3
   };
   A._AsyncRun__initializeScheduleImmediate_closure.prototype = {
     call$1(callback) {
@@ -6840,19 +6799,19 @@ const self = globalThis;
       t2 = this.span;
       t1.firstChild ? t1.removeChild(t2) : t1.appendChild(t2);
     },
-    $signature: 6
+    $signature: 33
   };
   A._AsyncRun__scheduleImmediateJsOverride_internalCallback.prototype = {
     call$0() {
       this.callback.call$0();
     },
-    $signature: 5
+    $signature: 4
   };
   A._AsyncRun__scheduleImmediateWithSetImmediate_internalCallback.prototype = {
     call$0() {
       this.callback.call$0();
     },
-    $signature: 5
+    $signature: 4
   };
   A._TimerImpl.prototype = {
     _TimerImpl$2(milliseconds, callback) {
@@ -7110,7 +7069,7 @@ const self = globalThis;
         t1._completeError$2(error, stackTrace);
       }
     },
-    $signature: 4
+    $signature: 3
   };
   A._Future__chainForeignFuture_closure0.prototype = {
     call$2(error, stackTrace) {
@@ -7314,9 +7273,6 @@ const self = globalThis;
         return false;
       return this._findBucketIndex$2(this._getBucket$2(rest, key), key) >= 0;
     },
-    addAll$1(_, other) {
-      this.$ti._eval$1("Map<1,2>")._as(other).forEach$1(0, new A._HashMap_addAll_closure(this));
-    },
     $index(_, key) {
       var strings, t1, nums;
       if (typeof key == "string" && key !== "__proto__") {
@@ -7340,35 +7296,27 @@ const self = globalThis;
       return index < 0 ? null : bucket[index + 1];
     },
     $indexSet(_, key, value) {
-      var strings, nums, rest, hash, bucket, index, _this = this,
+      var rest, hash, bucket, index, _this = this,
         t1 = _this.$ti;
       t1._precomputed1._as(key);
       t1._rest[1]._as(value);
-      if (typeof key == "string" && key !== "__proto__") {
-        strings = _this._collection$_strings;
-        _this._collection$_addHashTableEntry$3(strings == null ? _this._collection$_strings = A._HashMap__newHashTable() : strings, key, value);
-      } else if (typeof key == "number" && (key & 1073741823) === key) {
-        nums = _this._collection$_nums;
-        _this._collection$_addHashTableEntry$3(nums == null ? _this._collection$_nums = A._HashMap__newHashTable() : nums, key, value);
+      rest = _this._collection$_rest;
+      if (rest == null)
+        rest = _this._collection$_rest = A._HashMap__newHashTable();
+      hash = A.objectHashCode(key) & 1073741823;
+      bucket = rest[hash];
+      if (bucket == null) {
+        A._HashMap__setTableEntry(rest, hash, [key, value]);
+        ++_this._collection$_length;
+        _this._collection$_keys = null;
       } else {
-        rest = _this._collection$_rest;
-        if (rest == null)
-          rest = _this._collection$_rest = A._HashMap__newHashTable();
-        hash = A.objectHashCode(key) & 1073741823;
-        bucket = rest[hash];
-        if (bucket == null) {
-          A._HashMap__setTableEntry(rest, hash, [key, value]);
+        index = _this._findBucketIndex$2(bucket, key);
+        if (index >= 0)
+          bucket[index + 1] = value;
+        else {
+          bucket.push(key, value);
           ++_this._collection$_length;
           _this._collection$_keys = null;
-        } else {
-          index = _this._findBucketIndex$2(bucket, key);
-          if (index >= 0)
-            bucket[index + 1] = value;
-          else {
-            bucket.push(key, value);
-            ++_this._collection$_length;
-            _this._collection$_keys = null;
-          }
         }
       }
     },
@@ -7426,28 +7374,8 @@ const self = globalThis;
       }
       return _this._collection$_keys = result;
     },
-    _collection$_addHashTableEntry$3(table, key, value) {
-      var t1 = this.$ti;
-      t1._precomputed1._as(key);
-      t1._rest[1]._as(value);
-      if (table[key] == null) {
-        ++this._collection$_length;
-        this._collection$_keys = null;
-      }
-      A._HashMap__setTableEntry(table, key, value);
-    },
     _getBucket$2(table, key) {
       return table[A.objectHashCode(key) & 1073741823];
-    }
-  };
-  A._HashMap_addAll_closure.prototype = {
-    call$2(key, value) {
-      var t1 = this.$this,
-        t2 = t1.$ti;
-      t1.$indexSet(0, t2._precomputed1._as(key), t2._rest[1]._as(value));
-    },
-    $signature() {
-      return this.$this.$ti._eval$1("~(1,2)");
     }
   };
   A._IdentityHashMap.prototype = {
@@ -7527,7 +7455,7 @@ const self = globalThis;
       t1._contents = t2 + ": ";
       t1._contents += A.S(v);
     },
-    $signature: 19
+    $signature: 6
   };
   A.MapMixin.prototype = {
     forEach$1(_, action) {
@@ -7540,15 +7468,6 @@ const self = globalThis;
         action.call$2(key, t3 == null ? t1._as(t3) : t3);
       }
     },
-    addAll$1(_, other) {
-      A._instanceType(this)._eval$1("Map<1,2>")._as(other).forEach$1(0, new A.MapMixin_addAll_closure(this));
-    },
-    get$entries(_) {
-      var t1 = this.get$keys(),
-        t2 = A._instanceType(this)._eval$1("MapEntry<1,2>"),
-        t3 = A._instanceType(t1);
-      return A.MappedIterable_MappedIterable(t1, t3._bind$1(t2)._eval$1("1(Iterable.E)")._as(new A.MapMixin_entries_closure(this)), t3._eval$1("Iterable.E"), t2);
-    },
     get$length(_) {
       var t1 = this.get$keys();
       return t1.get$length(t1);
@@ -7558,42 +7477,10 @@ const self = globalThis;
     },
     $isMap: 1
   };
-  A.MapMixin_addAll_closure.prototype = {
-    call$2(key, value) {
-      var t1 = this.$this,
-        t2 = A._instanceType(t1);
-      t1.$indexSet(0, t2._precomputed1._as(key), t2._rest[1]._as(value));
-    },
-    $signature() {
-      return A._instanceType(this.$this)._eval$1("~(1,2)");
-    }
-  };
-  A.MapMixin_entries_closure.prototype = {
-    call$1(key) {
-      var t1 = this.$this,
-        t2 = A._instanceType(t1);
-      t2._precomputed1._as(key);
-      t1 = t1.$index(0, key);
-      if (t1 == null)
-        t1 = t2._rest[1]._as(t1);
-      return new A.MapEntry(key, t1, t2._eval$1("@<1>")._bind$1(t2._rest[1])._eval$1("MapEntry<1,2>"));
-    },
-    $signature() {
-      return A._instanceType(this.$this)._eval$1("MapEntry<1,2>(1)");
-    }
-  };
-  A._UnmodifiableMapMixin.prototype = {
-    addAll$1(_, other) {
-      this.$ti._eval$1("Map<1,2>")._as(other);
-      throw A.wrapException(A.UnsupportedError$("Cannot modify unmodifiable map"));
-    }
-  };
+  A._UnmodifiableMapMixin.prototype = {};
   A.MapView.prototype = {
     $index(_, key) {
       return this._collection$_map.$index(0, key);
-    },
-    addAll$1(_, other) {
-      this._collection$_map.addAll$1(0, this.$ti._eval$1("Map<1,2>")._as(other));
     },
     forEach$1(_, action) {
       this._collection$_map.forEach$1(0, this.$ti._eval$1("~(1,2)")._as(action));
@@ -7813,14 +7700,6 @@ const self = globalThis;
       var t1 = A._instanceType(this);
       return A.MappedIterable_MappedIterable(this, t1._bind$1($T)._eval$1("1(Iterable.E)")._as(toElement), t1._eval$1("Iterable.E"), $T);
     },
-    fold$1$2(_, initialValue, combine, $T) {
-      var t1, value;
-      $T._as(initialValue);
-      A._instanceType(this)._bind$1($T)._eval$1("1(1,Iterable.E)")._as(combine);
-      for (t1 = this.get$iterator(this), value = initialValue; t1.moveNext$0();)
-        value = combine.call$2(value, t1.get$current());
-      return value;
-    },
     get$length(_) {
       var count,
         it = this.get$iterator(this);
@@ -7833,11 +7712,6 @@ const self = globalThis;
     }
   };
   A.Iterator.prototype = {};
-  A.MapEntry.prototype = {
-    toString$0(_) {
-      return "MapEntry(" + A.S(this.key) + ": " + A.S(this.value) + ")";
-    }
-  };
   A.Null.prototype = {
     get$hashCode(_) {
       return A.Object.prototype.get$hashCode.call(this, this);
@@ -8173,7 +8047,7 @@ const self = globalThis;
       var t1 = type$.Function;
       this.future.then$1$2$onError(0, new A.futureToPromise__closure(t1._as(resolve), this.T), t1._as(reject), type$.dynamic);
     },
-    $signature: 39
+    $signature: 19
   };
   A.futureToPromise__closure.prototype = {
     call$1(result) {
@@ -8340,32 +8214,13 @@ const self = globalThis;
   A._CreateTrackedMangaOptions.prototype = {};
   A.TrackedMangaChapterReadAction.prototype = {};
   A.JsTrackerActionQueue.prototype = {};
-  A.Tuple.prototype = {};
   A.register_closure.prototype = {
-    call$2(previousSourceMap, entry) {
-      var id, t1, info, sourceExtensionJsClass, t2, t3;
-      type$.Map_String_Object._as(previousSourceMap);
-      type$.MapEntry_of_String_and_Tuple_of_SourceInfo_and_Registerable_Function._as(entry);
-      id = entry.key;
-      t1 = entry.value;
-      info = t1.first;
-      sourceExtensionJsClass = A.allowInterop(new A.register__closure(t1.second), type$.JsObject_Function);
-      t1 = info.__SourceInfo_jsSourceInfo_F;
-      t1 === $ && A.throwLateFieldNI("jsSourceInfo");
-      t2 = J.getInterceptor$x(t1);
-      t3 = type$.String;
-      previousSourceMap.addAll$1(0, A.LinkedHashMap_LinkedHashMap$_literal(["$SourceId$", id, id + "Info", A.JsObject_JsObject$jsify(A.LinkedHashMap_LinkedHashMap$_literal(["version", t2.get$version(t1), "name", t2.get$name(t1), "icon", t2.get$icon(t1), "author", t2.get$author(t1), "desc", t2.get$description(t1), "contentRating", t2.get$contentRating(t1), "websiteBaseURL", t2.get$websiteBaseURL(t1), "website", t2.get$authorWebsite(t1), "language", t2.get$language(t1), "tags", t2.get$sourceTags(t1)], t3, type$.dynamic)), id, sourceExtensionJsClass], t3, type$.Object));
-      return previousSourceMap;
-    },
-    $signature: 35
-  };
-  A.register__closure.prototype = {
     call$0() {
-      var source = new A.SourceFutureToPromiseAdatper(this.extensionCreator.call$0()),
+      var source = new A.SourceFutureToPromiseAdatper(this.creator.call$0()),
         t1 = type$.nullable_Promise_bool_Function;
       return A.JsObject_JsObject$jsify(A.LinkedHashMap_LinkedHashMap$_literal(["getChapterDetails", A.allowInterop(source.get$getChapterDetails(source), type$.Promise_ChapterDetails_Function_String_String), "getChapters", A.allowInterop(source.get$getChapters(source), type$.Promise_List_Chapter_Function_String), "getMangaDetails", A.allowInterop(source.get$getMangaDetails(source), type$.Promise_MangaInfo_Function_String), "getSearchResults", A.allowInterop(source.get$getSearchResults(source), type$.Promise_PagedResults_Function_2_SearchRequest_and_nullable_Object), "filterUpdatedManga", A.allowInterop(source.get$filterUpdatedManga(source), type$.nullable_Promise_void_Function_3_void_Function_MangaUpdates_and_Date_and_List_String), "getCloudflareBypassRequest", A.allowInterop(source.get$getCloudflareBypassRequest(source), type$.nullable_Request_Function), "getHomePageSections", A.allowInterop(source.get$getHomePageSections(source), type$.nullable_Promise_void_Function_void_Function_HomeSection), "getMangaShareUrl", A.allowInterop(source.get$getMangaShareUrl(source), type$.nullable_String_Function_String), "getSearchFields", A.allowInterop(source.get$getSearchFields(source), type$.nullable_Promise_List_SearchField_Function), "getSearchTags", A.allowInterop(source.get$getSearchTags(source), type$.nullable_Promise_List_TagSection_Function), "getSourceMenu", A.allowInterop(source.get$getSourceMenu(source), type$.nullable_Promise_Section_Function), "getViewMoreItems", A.allowInterop(source.get$getViewMoreItems(source), type$.nullable_Promise_PagedResults_Function_2_String_and_nullable_Object), "getWebsiteMangaDirectory", A.allowInterop(source.get$getWebsiteMangaDirectory(source), type$.nullable_Promise_PagedResults_Function_nullable_Object), "supportsSearchOperators", A.allowInterop(source.get$supportsSearchOperators(source), t1), "supportsTagExclusion", A.allowInterop(source.get$supportsTagExclusion(source), t1)], type$.String, type$.Function));
     },
-    $signature: 36
+    $signature: 35
   };
   (function aliases() {
     var _ = J.Interceptor.prototype;
@@ -8391,7 +8246,7 @@ const self = globalThis;
     _static_1(A, "async__AsyncRun__scheduleImmediateWithSetImmediate$closure", "_AsyncRun__scheduleImmediateWithSetImmediate", 1);
     _static_1(A, "async__AsyncRun__scheduleImmediateWithTimer$closure", "_AsyncRun__scheduleImmediateWithTimer", 1);
     _static_0(A, "async___startMicrotaskLoop$closure", "_startMicrotaskLoop", 0);
-    _static_1(A, "js___convertToDart$closure", "_convertToDart", 38);
+    _static_1(A, "js___convertToDart$closure", "_convertToDart", 37);
     _static_0(A, "guya_Guya___new_tearOff$closure", "Guya___new_tearOff", 25);
     var _;
     _instance(_ = A.SourceFutureToPromiseAdatper.prototype, "get$filterUpdatedManga", 1, 3, null, ["call$3"], ["filterUpdatedManga$3"], 20, 0, 0);
@@ -8399,7 +8254,7 @@ const self = globalThis;
     _instance_1_i(_, "get$getChapters", "getChapters$1", 22);
     _instance_0_i(_, "get$getCloudflareBypassRequest", "getCloudflareBypassRequest$0", 23);
     _instance_1_i(_, "get$getHomePageSections", "getHomePageSections$1", 24);
-    _instance_1_i(_, "get$getMangaDetails", "getMangaDetails$1", 33);
+    _instance_1_i(_, "get$getMangaDetails", "getMangaDetails$1", 38);
     _instance_1_i(_, "get$getMangaShareUrl", "getMangaShareUrl$1", 26);
     _instance_0_i(_, "get$getSearchFields", "getSearchFields$0", 27);
     _instance_2_i(_, "get$getSearchResults", "getSearchResults$2", 28);
@@ -8407,8 +8262,8 @@ const self = globalThis;
     _instance_0_i(_, "get$getSourceMenu", "getSourceMenu$0", 30);
     _instance_2_i(_, "get$getViewMoreItems", "getViewMoreItems$2", 31);
     _instance_1_i(_, "get$getWebsiteMangaDirectory", "getWebsiteMangaDirectory$1", 32);
-    _instance_0_i(_, "get$supportsSearchOperators", "supportsSearchOperators$0", 3);
-    _instance_0_i(_, "get$supportsTagExclusion", "supportsTagExclusion$0", 3);
+    _instance_0_i(_, "get$supportsSearchOperators", "supportsSearchOperators$0", 5);
+    _instance_0_i(_, "get$supportsTagExclusion", "supportsTagExclusion$0", 5);
   })();
   (function inheritance() {
     var _mixin = hunkHelpers.mixin,
@@ -8416,7 +8271,7 @@ const self = globalThis;
       _inherit = hunkHelpers.inherit,
       _inheritMany = hunkHelpers.inheritMany;
     _inherit(A.Object, null);
-    _inheritMany(A.Object, [A.JS_CONST, J.Interceptor, J.ArrayIterator, A.Error, A.Iterable, A.ListIterator, A.Iterator, A.FixedLengthListMixin, A.Symbol, A.MapView, A.ConstantMap, A.JSInvocationMirror, A.Closure, A.TypeErrorDecoder, A.NullThrownFromJavaScriptException, A.ExceptionAndStackTrace, A._StackTrace, A._Required, A.MapMixin, A.LinkedHashMapCell, A.LinkedHashMapKeyIterator, A.Rti, A._FunctionParameters, A._TimerImpl, A._AsyncAwaitCompleter, A.AsyncError, A._FutureListener, A._Future, A._AsyncCallbackEntry, A._StreamIterator, A._Zone, A._HashMapKeyIterator, A.ListMixin, A._UnmodifiableMapMixin, A.DateTime, A._Enum, A.StackOverflowError, A._Exception, A.MapEntry, A.Null, A._StringStackTrace, A.StringBuffer, A.JsObject, A.Registerable, A.Parser, A.SourceFutureToPromiseAdatper, A.SourceInfo, A.SourceTag, A.Tuple]);
+    _inheritMany(A.Object, [A.JS_CONST, J.Interceptor, J.ArrayIterator, A.Error, A.Iterable, A.ListIterator, A.Iterator, A.FixedLengthListMixin, A.Symbol, A.MapView, A.ConstantMap, A.JSInvocationMirror, A.Closure, A.TypeErrorDecoder, A.NullThrownFromJavaScriptException, A.ExceptionAndStackTrace, A._StackTrace, A._Required, A.MapMixin, A.LinkedHashMapCell, A.LinkedHashMapKeyIterator, A.Rti, A._FunctionParameters, A._TimerImpl, A._AsyncAwaitCompleter, A.AsyncError, A._FutureListener, A._Future, A._AsyncCallbackEntry, A._StreamIterator, A._Zone, A._HashMapKeyIterator, A.ListMixin, A._UnmodifiableMapMixin, A.DateTime, A._Enum, A.StackOverflowError, A._Exception, A.Null, A._StringStackTrace, A.StringBuffer, A.JsObject, A.Registerable, A.Parser, A.SourceFutureToPromiseAdatper, A.SourceInfo, A.SourceTag]);
     _inheritMany(J.Interceptor, [J.JSBool, J.JSNull, J.JavaScriptObject, J.JSArray, J.JSNumber, J.JSString, A.NativeTypedData]);
     _inheritMany(J.JavaScriptObject, [J.LegacyJavaScriptObject, A.EventTarget, A.Blob, A.DomException, A.Event, A.ImageData, A.KeyRange]);
     _inheritMany(J.LegacyJavaScriptObject, [J.PlainJavaScriptObject, J.UnknownJavaScriptObject, J.JavaScriptFunction, A.Date, A.Record, A.JsError, A.Atomics, A.TypedArray, A.Promise, A._PropertyDescriptor, A.APIWrapper, A.Requestable, A.JsSource, A.JsTracker, A.Chapter, A._CreateChapterOptions, A.ChapterDetails, A._CreateChapterDetailsOptions, A.FormRow, A._CreateButtonOptions, A.Form, A._CreateFormOptions, A._CreateHeaderOptions, A._CreateInputFieldOptions, A._CreateLabelOptions, A._CreateLinkOptions, A._CreateMultilineLabelOptions, A._CreateNavigationButtonOptions, A.OAuthResponseType, A._CreateOAuthButtonOptions, A.Section, A._CreateSectionOptions, A._CreateSelectOptions, A._CreateStepperOptions, A._CreateSwitchOptions, A.HomeSection, A._CreateHomeSectionOptions, A.MangaInfo, A._CreateMangaInfoOptions, A.MangaTile, A.IconText, A._CreateMangaTileOptions, A._CreateIconTextOptions, A.MangaUpdates, A._CreateMangaUpdatesOptions, A.PagedResults, A._CreatePagedResultsOptions, A.RawData, A._CreateRawDataOptions, A.Request, A.Cookie, A._CreateCookieOptions, A._CreateRequestObjectOptions, A.JsRequestInterceptor, A.RequestManagerInfo, A._CreateRequestManagerInfoOptions, A.Response, A.SearchField, A._CreateSearchFieldOptions, A.SearchRequest, A.JsSourceInfo, A.SourceManga, A._CreateSourceMangaOptions, A.SourceStateManagerInfo, A.JsSourceKeychain, A._CreateSourceStateManagerInfo, A.JsSourceTag, A.Tag, A.TagSection, A.CreateTagOptions, A.CreateTagSectionOptions, A.TrackedManga, A._CreateTrackedMangaOptions, A.TrackedMangaChapterReadAction, A.JsTrackerActionQueue]);
@@ -8432,8 +8287,8 @@ const self = globalThis;
     _inherit(A.UnmodifiableMapView, A._UnmodifiableMapView_MapView__UnmodifiableMapMixin);
     _inherit(A.ConstantMapView, A.UnmodifiableMapView);
     _inherit(A.ConstantStringMap, A.ConstantMap);
-    _inheritMany(A.Closure, [A.Closure2Args, A.Closure0Args, A.TearOffClosure, A.initHooks_closure, A.initHooks_closure1, A._AsyncRun__initializeScheduleImmediate_internalCallback, A._AsyncRun__initializeScheduleImmediate_closure, A._awaitOnObject_closure, A._Future__chainForeignFuture_closure, A._Future__propagateToListeners_handleWhenCompleteCallback_closure, A.MapMixin_entries_closure, A.JsObject__convertDataTree__convert, A._convertToJS_closure, A._convertToJS_closure0, A._wrapToDart_closure, A._wrapToDart_closure0, A._wrapToDart_closure1, A.futureToPromise__closure, A.SourceInfo_closure]);
-    _inheritMany(A.Closure2Args, [A.Primitives_functionNoSuchMethod_closure, A.JsLinkedHashMap_addAll_closure, A.initHooks_closure0, A._awaitOnObject_closure0, A._wrapJsFunctionForAsync_closure, A._Future__chainForeignFuture_closure0, A._HashMap_addAll_closure, A.MapBase_mapToString_closure, A.MapMixin_addAll_closure, A.NoSuchMethodError_toString_closure, A.futureToPromise_closure, A.register_closure]);
+    _inheritMany(A.Closure, [A.Closure2Args, A.Closure0Args, A.TearOffClosure, A.initHooks_closure, A.initHooks_closure1, A._AsyncRun__initializeScheduleImmediate_internalCallback, A._AsyncRun__initializeScheduleImmediate_closure, A._awaitOnObject_closure, A._Future__chainForeignFuture_closure, A._Future__propagateToListeners_handleWhenCompleteCallback_closure, A.JsObject__convertDataTree__convert, A._convertToJS_closure, A._convertToJS_closure0, A._wrapToDart_closure, A._wrapToDart_closure0, A._wrapToDart_closure1, A.futureToPromise__closure, A.SourceInfo_closure]);
+    _inheritMany(A.Closure2Args, [A.Primitives_functionNoSuchMethod_closure, A.initHooks_closure0, A._awaitOnObject_closure0, A._wrapJsFunctionForAsync_closure, A._Future__chainForeignFuture_closure0, A.MapBase_mapToString_closure, A.NoSuchMethodError_toString_closure, A.futureToPromise_closure]);
     _inherit(A.NullError, A.TypeError);
     _inheritMany(A.TearOffClosure, [A.StaticClosure, A.BoundClosure]);
     _inherit(A.MapBase, A.MapMixin);
@@ -8446,7 +8301,7 @@ const self = globalThis;
     _inherit(A.NativeTypedArrayOfInt, A._NativeTypedArrayOfInt_NativeTypedArray_ListMixin_FixedLengthListMixin);
     _inheritMany(A.NativeTypedArrayOfInt, [A.NativeInt16List, A.NativeInt32List, A.NativeInt8List, A.NativeUint16List, A.NativeUint32List, A.NativeUint8ClampedList, A.NativeUint8List]);
     _inherit(A._TypeError, A._Error);
-    _inheritMany(A.Closure0Args, [A._AsyncRun__scheduleImmediateJsOverride_internalCallback, A._AsyncRun__scheduleImmediateWithSetImmediate_internalCallback, A._TimerImpl_internalCallback, A._Future__addListener_closure, A._Future__prependListeners_closure, A._Future__chainForeignFuture_closure1, A._Future__asyncCompleteWithValue_closure, A._Future__chainFuture_closure, A._Future__asyncCompleteError_closure, A._Future__propagateToListeners_handleWhenCompleteCallback, A._Future__propagateToListeners_handleValueCallback, A._Future__propagateToListeners_handleError, A._rootHandleError_closure, A._RootZone_bindCallbackGuarded_closure, A.register__closure]);
+    _inheritMany(A.Closure0Args, [A._AsyncRun__scheduleImmediateJsOverride_internalCallback, A._AsyncRun__scheduleImmediateWithSetImmediate_internalCallback, A._TimerImpl_internalCallback, A._Future__addListener_closure, A._Future__prependListeners_closure, A._Future__chainForeignFuture_closure1, A._Future__asyncCompleteWithValue_closure, A._Future__chainFuture_closure, A._Future__asyncCompleteError_closure, A._Future__propagateToListeners_handleWhenCompleteCallback, A._Future__propagateToListeners_handleValueCallback, A._Future__propagateToListeners_handleError, A._rootHandleError_closure, A._RootZone_bindCallbackGuarded_closure, A.register_closure]);
     _inherit(A._RootZone, A._Zone);
     _inherit(A._IdentityHashMap, A._HashMap);
     _inheritMany(A.ArgumentError, [A.RangeError, A.IndexError]);
@@ -8475,7 +8330,7 @@ const self = globalThis;
     typeUniverse: {eC: new Map(), tR: {}, eT: {}, tPV: {}, sEA: []},
     mangledGlobalNames: {int: "int", double: "double", num: "num", String: "String", bool: "bool", Null: "Null", List: "List"},
     mangledNames: {},
-    types: ["~()", "~(~())", "@(@)", "Promise<1&>?()", "Null(@)", "Null()", "Null(~())", "@(@,String)", "~(@)", "Null(@,StackTrace)", "~(int,@)", "Null(Object,StackTrace)", "_Future<@>(@)", "~(String,@)", "~(Symbol0,@)", "@(Object?)", "JsFunction(@)", "JsArray<@>(@)", "JsObject(@)", "~(Object?,Object?)", "Promise<1&>?(~(MangaUpdates),Date,List<String>)", "Promise<1&>(String,String)", "Promise<1&>(String)", "Request?()", "Promise<1&>?(~(HomeSection))", "Guya()", "String?(String)", "Promise<1&>?()", "Promise<1&>(SearchRequest,Object?)", "Promise<1&>?()", "Promise<1&>?()", "Promise<1&>?(String,Object?)", "Promise<1&>?(Object?)", "Promise<1&>(String)", "Map<String,@>(SourceTag)", "Map<String,Object>(Map<String,Object>,MapEntry<String,Tuple<SourceInfo,Registerable()>>)", "JsObject()", "@(String)", "Object?(@)", "~(Function,Function)"],
+    types: ["~()", "~(~())", "@(@)", "Null(@)", "Null()", "Promise<1&>?()", "~(Object?,Object?)", "@(@,String)", "~(@)", "Null(@,StackTrace)", "~(int,@)", "Null(Object,StackTrace)", "_Future<@>(@)", "~(String,@)", "~(Symbol0,@)", "@(Object?)", "JsFunction(@)", "JsArray<@>(@)", "JsObject(@)", "~(Function,Function)", "Promise<1&>?(~(MangaUpdates),Date,List<String>)", "Promise<1&>(String,String)", "Promise<1&>(String)", "Request?()", "Promise<1&>?(~(HomeSection))", "Guya()", "String?(String)", "Promise<1&>?()", "Promise<1&>(SearchRequest,Object?)", "Promise<1&>?()", "Promise<1&>?()", "Promise<1&>?(String,Object?)", "Promise<1&>?(Object?)", "Null(~())", "Map<String,@>(SourceTag)", "JsObject()", "@(String)", "Object?(@)", "Promise<1&>(String)"],
     interceptorsByTag: null,
     leafTags: null,
     arrayRti: Symbol("$ti")
@@ -8516,8 +8371,6 @@ const self = globalThis;
       List_String: findType("List<String>"),
       List_dynamic: findType("List<@>"),
       MangaInfo: findType("MangaInfo"),
-      MapEntry_of_String_and_Tuple_of_SourceInfo_and_Registerable_Function: findType("MapEntry<String,Tuple<SourceInfo,Registerable()>>"),
-      Map_String_Object: findType("Map<String,Object>"),
       Map_dynamic_dynamic: findType("Map<@,@>"),
       Node: findType("Node"),
       Null: findType("Null"),
@@ -8534,7 +8387,6 @@ const self = globalThis;
       StackTrace: findType("StackTrace"),
       String: findType("String"),
       Symbol: findType("Symbol0"),
-      Tuple_of_SourceInfo_and_Registerable_Function: findType("Tuple<SourceInfo,Registerable()>"),
       TypeError: findType("TypeError"),
       TypedData: findType("TypedData"),
       UnknownJavaScriptObject: findType("UnknownJavaScriptObject"),
