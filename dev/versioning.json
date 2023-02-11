@@ -1,1 +1,1 @@
-{"buildTime":"2023-01-26T05:40:51.025079Z","sources":[]}
+{"buildTime":"2023-02-11T01:39:10.264771Z","sources":[{"version":"2.0.0-alpha.3","name":"Guya (Dart)","icon":"icon.png","author":"getBoolean","desc":"Extension that pulls manga from Guya.moe.","contentRating":"EVERYONE","websiteBaseURL":"https://guya.cubari.moe","website":"https://github.com/getBoolean","language":"gb","tags":[{"text":"Notifications","type":"success"}],"id":"Guya2"}]}
